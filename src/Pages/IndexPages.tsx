@@ -4,6 +4,8 @@ import './IndexPages.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import profileImage from '../assets/images/m1.png';
 
+import CV from '/CV_Wilson_Frederique.pdf';
+
 const IndexPages: React.FC = () => {
   const [activeSection, setActiveSection] = useState('accueill');
   const [menuOpen, setMenuOpen] = useState(false);
@@ -176,13 +178,15 @@ const IndexPages: React.FC = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.9, duration: 0.8 }}
                 >
-                  <motion.button
-                    className="cta-button"
-                    whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(255,182,193,0.4)" }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span>Accéder à mon CV</span>
-                  </motion.button>
+                  <a href={CV}>
+                    <motion.button
+                      className="cta-button"
+                      whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(255,182,193,0.4)" }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <span>Accéder à mon CV</span>
+                    </motion.button>
+                  </a>
                 </motion.div>
                 
                 <motion.div
