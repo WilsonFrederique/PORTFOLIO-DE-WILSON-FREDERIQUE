@@ -193,6 +193,7 @@ const IndexPages: React.FC = () => {
 
     const [showMoreProjects, setShowMoreProjects] = useState(false);
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [selectedService, setSelectedService] = useState<string | null>(null);
 
     useEffect(() => {
         // Mobile Menu Toggle
@@ -719,6 +720,179 @@ const IndexPages: React.FC = () => {
                         <button 
                             onClick={() => setSelectedProject(null)}
                             className="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-full font-medium transition-all duration-300 flex items-center shadow hover:shadow-lg"
+                        >
+                            <span>Fermer</span>
+                            <i className="fas fa-times ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    type ServiceDetailModalProps = {
+        service: string;
+        onClose: () => void;
+    };
+
+    const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({ service, onClose }) => {
+        const services = {
+            'web-dev': {
+                title: "Développement Web",
+                icon: "fas fa-code",
+                color: "indigo",
+                description: "Je crée des sites web modernes, performants et entièrement responsives, adaptés aux besoins spécifiques de votre entreprise. Mes solutions sur mesure utilisent les dernières technologies web pour offrir une expérience utilisateur exceptionnelle.",
+                features: [
+                    "Sites vitrine et applications web complexes",
+                    "Design responsive et adaptatif",
+                    "Optimisation des performances",
+                    "Intégration de CMS (WordPress, etc.)",
+                    "Solutions e-commerce"
+                ],
+                technologies: ["React", "Vue.js", "TypeScript", "Node.js", "Express", "Laravel"]
+            },
+            'frontend': {
+                title: "Intégration Front-end",
+                icon: "fas fa-laptop-code",
+                color: "blue",
+                description: "Je développe des interfaces utilisateur fluides et intuitives en utilisant les meilleures pratiques du marché. Mes intégrations sont parfaitement compatibles avec tous les appareils et navigateurs.",
+                features: [
+                    "Interfaces utilisateur réactives",
+                    "Animations fluides et modernes",
+                    "Accessibilité (WCAG)",
+                    "Optimisation SEO technique",
+                    "Tests cross-browser"
+                ],
+                technologies: ["HTML5", "CSS3", "JavaScript", "React", "TypeScript", "Bootstrap", "Tailwind CSS"]
+            },
+            'maintenance': {
+                title: "Maintenance & Optimisation",
+                icon: "fas fa-tools",
+                color: "emerald",
+                description: "Je propose des services complets de maintenance pour garder votre site web à jour, sécurisé et performant. Mes optimisations peuvent considérablement améliorer la vitesse et l'expérience utilisateur.",
+                features: [
+                    "Mises à jour de sécurité",
+                    "Correction de bugs",
+                    "Optimisation des performances",
+                    "Amélioration du SEO",
+                    "Support technique"
+                ],
+                technologies: ["Git"]
+            },
+            'digital': {
+                title: "Digitalisation des Processus",
+                icon: "fas fa-digital-tachograph",
+                color: "purple",
+                description: "Je transforme vos processus métiers en solutions numériques efficaces pour automatiser les tâches répétitives, améliorer la productivité et réduire les erreurs humaines.",
+                features: [
+                    "Automatisation des workflows",
+                    "Solutions sur mesure",
+                    "Interfaces intuitives",
+                    "Formation des équipes",
+                    "Support continu"
+                ],
+                technologies: ["Laravel", "Node.js", "Express", "React", "TypeScript"]
+            },
+            'database': {
+                title: "Bases de Données",
+                icon: "fas fa-database",
+                color: "amber",
+                description: "Je conçois et optimise des structures de données robustes pour garantir la performance, la sécurité et l'évolutivité de vos applications.",
+                features: [
+                    "Conception de schémas relationnels",
+                    "Optimisation des requêtes",
+                    "Migration de données",
+                    "Sauvegardes automatisées",
+                    "Sécurité avancée"
+                ],
+                technologies: ["MySQL", "PostgreSQL", "SQLite"]
+            },
+            'api': {
+                title: "API RESTful",
+                icon: "fas fa-plug",
+                color: "red",
+                description: "Je développe des API modernes, sécurisées et documentées qui permettent à vos différents systèmes de communiquer efficacement entre eux.",
+                features: [
+                    "Architecture RESTful",
+                    "Authentification sécurisée",
+                    "Documentation Swagger/OpenAPI",
+                    "Versioning d'API",
+                    "Tests automatisés"
+                ],
+                technologies: ["Node & Express.js", "Laravel", "API REST", "OAuth2", "Postman"]
+            }
+        };
+
+        const selected = services[service as keyof typeof services];
+
+        return (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+                {/* Backdrop */}
+                <div 
+                    className="fixed inset-0 bg-black/70 backdrop-blur-md transition-opacity duration-300"
+                    onClick={onClose}
+                ></div>
+                
+                {/* Contenu modal */}
+                <div className={`relative w-full max-w-2xl bg-slate-800 rounded-2xl shadow-2xl borderSe border-${selected.color}-500/30 overflow-hidden animate-scale-in`}>
+                    {/* Header */}
+                    <div className={`sticky top-0 z-10 bg-gradient-to-r from-${selected.color}-500/10 to-${selected.color}-600/10 px-6 py-4 border-b border-${selected.color}-500/20`}>
+                        <div className="flex justify-between items-center">
+                            <h3 className="text-2xl font-bold text-white flex items-center">
+                                <i className={`${selected.icon} text-${selected.color}-400 mr-3`}></i>
+                                {selected.title}
+                            </h3>
+                            <button 
+                                className="p-2 text-gray-400 hover:text-white rounded-full hover:bg-slate-700 transition-all duration-200"
+                                onClick={onClose}
+                                aria-label="Fermer la modal"
+                            >
+                                <i className="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    {/* Contenu */}
+                    <div className="overflow-y-auto max-h-[70vh] p-6">
+                        <div className="mb-6">
+                            <h4 className="text-lg font-semibold text-white mb-3">Description</h4>
+                            <p className="text-gray-400 leading-relaxed">
+                                {selected.description}
+                            </p>
+                        </div>
+                        
+                        <div className="mb-6">
+                            <h4 className="text-lg font-semibold text-white mb-3">Fonctionnalités clés</h4>
+                            <ul className="space-y-2">
+                                {selected.features.map((feature, index) => (
+                                    <li key={index} className="flex items-start">
+                                        <i className={`fas fa-check-circle text-${selected.color}-400 mt-1 mr-3`}></i>
+                                        <span className="text-gray-400 flex-1">{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 className="text-lg font-semibold text-white mb-3">Technologies utilisées</h4>
+                            <div className="flex flex-wrap gap-2">
+                                {selected.technologies.map((tech, index) => (
+                                    <span 
+                                        key={index} 
+                                        className={`text-sm px-3 py-1.5 rounded-full bg-slate-700 text-slate-300 hover:bg-${selected.color}-500/20 hover:text-${selected.color}-400 transition-colors duration-200`}
+                                    >
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Footer */}
+                    <div className="sticky bottom-0 bg-slate-900/30 from-slate-800 to-transparent pt-6 pb-4 px-6 flex justify-end">
+                        <button 
+                            onClick={onClose}
+                            className={`px-6 py-2 bg-${selected.color}-500/10 borderSeb border-${selected.color}-500/30 text-${selected.color}-400 hover:text-white hover:bg-${selected.color}-500/20 rounded-lg font-medium transition-all duration-300 flex items-center shadow hover:shadow-lg`}
                         >
                             <span>Fermer</span>
                             <i className="fas fa-times ml-2"></i>
@@ -1507,83 +1681,158 @@ const IndexPages: React.FC = () => {
                 </div>
             </section>
 
-            {/* // Testimonials Section  */}
-            <section className="py-20 bg-slate-900 from-slate-800/50 to-slate-900/50">
+            {/* Service  */}
+            <section id="services" className="py-20 bg-gradient-to-b from-slate-900 to-slate-950">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            <span className="section-title gradient-text">Témoignages</span>
+                            Mes <span className="section-title gradient-text">Services</span>
                         </h2>
                         <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-                            Ce que disent mes clients et collègues à propos de mon travail.
+                            Des solutions sur mesure pour répondre à tous vos besoins numériques
                         </p>
                     </div>
                     
+                    {/* Première ligne de services */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+                        {/* Service 1 - Développement Web */}
+                        <div className="relative group bg-slate-800/50 borderSe border-slate-700 rounded-2xl p-8 hover:border-indigo-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
+                            <div className="relative z-10">
+                                <div className="w-14 h-14 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-6 text-indigo-400 group-hover:text-white transition-colors duration-300">
+                                    <i className="fas fa-code text-2xl"></i>
+                                </div>
+                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-indigo-400 transition-colors duration-300">Développement Web</h3>
+                                <p className="text-gray-400 mb-6 leading-relaxed">
+                                    Création de sites web modernes, performants et responsives, adaptés aux besoins des entreprises grâce à des solutions sur mesure utilisant les technologies web actuelles.
+                                </p>
+                                <button 
+                                    onClick={() => setSelectedService('web-dev')}
+                                    className="px-5 py-2 text-sm font-medium text-indigo-400 hover:text-white bg-slate-800/50 borderSeb border-indigo-500/20 rounded-lg hover:bg-indigo-500/10 transition-all duration-300 inline-flex items-center group"
+                                >
+                                    <span>En savoir plus</span>
+                                    <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        {/* Service 2 - Intégration Front-end */}
+                        <div className="relative group bg-slate-800/50 borderSe border-slate-700 rounded-2xl p-8 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
+                            <div className="relative z-10">
+                                <div className="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 text-blue-400 group-hover:text-white transition-colors duration-300">
+                                    <i className="fas fa-laptop-code text-2xl"></i>
+                                </div>
+                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors duration-300">Intégration Front-end</h3>
+                                <p className="text-gray-400 mb-6 leading-relaxed">
+                                    Développement d'interfaces web responsives et performantes avec HTML, CSS, JavaScript, Bootstrap, Tailwind, React et TypeScript, assurant compatibilité et accessibilité.
+                                </p>
+                                <button 
+                                    onClick={() => setSelectedService('frontend')}
+                                    className="px-5 py-2 text-sm font-medium text-blue-400 hover:text-white bg-slate-800/50 borderSeb border-blue-500/20 rounded-lg hover:bg-blue-500/10 transition-all duration-300 inline-flex items-center group"
+                                >
+                                    <span>En savoir plus</span>
+                                    <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        {/* Service 3 - Maintenance */}
+                        <div className="relative group bg-slate-800/50 borderSe border-slate-700 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
+                            <div className="relative z-10">
+                                <div className="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400 group-hover:text-white transition-colors duration-300">
+                                    <i className="fas fa-tools text-2xl"></i>
+                                </div>
+                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-emerald-400 transition-colors duration-300">Maintenance & Optimisation</h3>
+                                <p className="text-gray-400 mb-6 leading-relaxed">
+                                    Maintenance, correction de bugs et optimisation pour améliorer la performance, l'accessibilité et le SEO de votre site web existant.
+                                </p>
+                                <button 
+                                    onClick={() => setSelectedService('maintenance')}
+                                    className="px-5 py-2 text-sm font-medium text-emerald-400 hover:text-white bg-slate-800/50 borderSeb border-emerald-500/20 rounded-lg hover:bg-emerald-500/10 transition-all duration-300 inline-flex items-center group"
+                                >
+                                    <span>En savoir plus</span>
+                                    <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Deuxième ligne de services */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {/* <!-- Testimonial 1 --> */}
-                        <div className="bg-slate-800 p-8 rounded-xl hover:bg-slate-700/50 transition-all-smooth card-hover">
-                            <div className="flex items-center mb-6">
-                                <img className="w-12 h-12 rounded-full mr-4" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" />
-                                <div>
-                                    <h4 className="font-bold text-white">Sophie Martin</h4>
-                                    <p className="text-sm text-gray-500">CEO @TechVision</p>
+                        {/* Service 4 - Digitalisation */}
+                        <div className="relative group bg-slate-800/50 borderSe border-slate-700 rounded-2xl p-8 hover:border-purple-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
+                            <div className="relative z-10">
+                                <div className="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6 text-purple-400 group-hover:text-white transition-colors duration-300">
+                                    <i className="fas fa-digital-tachograph text-2xl"></i>
                                 </div>
-                            </div>
-                            <p className="text-gray-400 italic mb-6">
-                                "Wilson a transformé notre plateforme avec des solutions innovantes. Son code est propre et bien documenté."
-                            </p>
-                            <div className="flex text-yellow-400">
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
+                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-purple-400 transition-colors duration-300">Digitalisation</h3>
+                                <p className="text-gray-400 mb-6 leading-relaxed">
+                                    Développement de solutions numériques personnalisées pour automatiser et optimiser les processus internes des entreprises.
+                                </p>
+                                <button 
+                                    onClick={() => setSelectedService('digital')}
+                                    className="px-5 py-2 text-sm font-medium text-purple-400 hover:text-white bg-slate-800/50 borderSeb border-purple-500/20 rounded-lg hover:bg-purple-500/10 transition-all duration-300 inline-flex items-center group"
+                                >
+                                    <span>En savoir plus</span>
+                                    <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </button>
                             </div>
                         </div>
                         
-                        {/* <!-- Testimonial 2 --> */}
-                        <div className="bg-slate-800 p-8 rounded-xl hover:bg-slate-700/50 transition-all-smooth card-hover">
-                            <div className="flex items-center mb-6">
-                                <img className="w-12 h-12 rounded-full mr-4" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" />
-                                <div>
-                                    <h4 className="font-bold text-white">Pierre Lefevre</h4>
-                                    <p className="text-sm text-gray-500">CTO @DigitalWave</p>
+                        {/* Service 5 - Bases de données */}
+                        <div className="relative group bg-slate-800/50 borderSe border-slate-700 rounded-2xl p-8 hover:border-amber-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-yellow-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
+                            <div className="relative z-10">
+                                <div className="w-14 h-14 bg-amber-500/10 rounded-xl flex items-center justify-center mb-6 text-amber-400 group-hover:text-white transition-colors duration-300">
+                                    <i className="fas fa-database text-2xl"></i>
                                 </div>
-                            </div>
-                            <p className="text-gray-400 italic mb-6">
-                                "Un professionnel consciencieux qui comprend rapidement les besoins métiers. Très réactif et compétent."
-                            </p>
-                            <div className="flex text-yellow-400">
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star-half-alt"></i>
+                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-amber-400 transition-colors duration-300">Bases de données</h3>
+                                <p className="text-gray-400 mb-6 leading-relaxed">
+                                    Gestion et intégration optimisée de bases de données MySQL et PostgreSQL pour des applications web sécurisées et performantes.
+                                </p>
+                                <button 
+                                    onClick={() => setSelectedService('database')}
+                                    className="px-5 py-2 text-sm font-medium text-amber-400 hover:text-white bg-slate-800/50 borderSeb border-amber-500/20 rounded-lg hover:bg-amber-500/10 transition-all duration-300 inline-flex items-center group"
+                                >
+                                    <span>En savoir plus</span>
+                                    <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </button>
                             </div>
                         </div>
                         
-                        {/* <!-- Testimonial 3 --> */}
-                        <div className="bg-slate-800 p-8 rounded-xl hover:bg-slate-700/50 transition-all-smooth card-hover">
-                            <div className="flex items-center mb-6">
-                                <img className="w-12 h-12 rounded-full mr-4" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" />
-                                <div>
-                                    <h4 className="font-bold text-white">Élodie Bernard</h4>
-                                    <p className="text-sm text-gray-500">Lead Designer @StartUpX</p>
+                        {/* Service 6 - API RESTful */}
+                        <div className="relative group bg-slate-800/50 borderSe border-slate-700 rounded-2xl p-8 hover:border-red-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                            <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
+                            <div className="relative z-10">
+                                <div className="w-14 h-14 bg-red-500/10 rounded-xl flex items-center justify-center mb-6 text-red-400 group-hover:text-white transition-colors duration-300">
+                                    <i className="fas fa-plug text-2xl"></i>
                                 </div>
-                            </div>
-                            <p className="text-gray-400 italic mb-6">
-                                "Collaboration fluide avec un excellent esprit d'équipe. Wilson transforme nos designs en expériences interactives."
-                            </p>
-                            <div className="flex text-yellow-400">
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
-                                <i className="fas fa-star"></i>
+                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-red-400 transition-colors duration-300">API RESTful</h3>
+                                <p className="text-gray-400 mb-6 leading-relaxed">
+                                    Conception et développement d'API robustes, sécurisées et performantes, facilitant l'échange de données entre applications.
+                                </p>
+                                <button 
+                                    onClick={() => setSelectedService('api')}
+                                    className="px-5 py-2 text-sm font-medium text-red-400 hover:text-white bg-slate-800/50 borderSeb border-red-500/20 rounded-lg hover:bg-red-500/10 transition-all duration-300 inline-flex items-center group"
+                                >
+                                    <span>En savoir plus</span>
+                                    <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                {/* Modal pour les détails des services */}
+                {selectedService && (
+                    <ServiceDetailModal 
+                        service={selectedService} 
+                        onClose={() => setSelectedService(null)}
+                    />
+                )}
             </section>
 
             {/* Contact Section  */}
