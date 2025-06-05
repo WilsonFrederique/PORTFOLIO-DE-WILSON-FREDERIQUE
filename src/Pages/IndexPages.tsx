@@ -743,7 +743,7 @@ const IndexPages: React.FC = () => {
         service: string;
         onClose: () => void;
     };
-    // Service mODAL
+    // Service modal
     const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({ service, onClose }) => {
         const services = {
             'web-dev': {
@@ -843,52 +843,52 @@ const IndexPages: React.FC = () => {
                 ></div>
                 
                 {/* Contenu modal */}
-                <div className={`relative w-full max-w-2xl bg-slate-800 rounded-2xl shadow-2xl borderSe border-${selected.color}-500/30 overflow-hidden animate-scale-in`}>
+                <div className={`relative w-full max-w-2xl mx-4 bg-slate-800 rounded-2xl shadow-2xl borderSe border-${selected.color}-500/30 overflow-hidden animate-scale-in`}>
                     {/* Header */}
-                    <div className={`sticky top-0 z-10 bg-gradient-to-r from-${selected.color}-500/10 to-${selected.color}-600/10 px-6 py-4 border-b border-${selected.color}-500/20`}>
+                    <div className={`sticky top-0 z-10 bg-gradient-to-r from-${selected.color}-500/10 to-${selected.color}-600/10 px-4 sm:px-6 py-3 sm:py-4 border-b border-${selected.color}-500/20`}>
                         <div className="flex justify-between items-center">
-                            <h3 className="text-2xl font-bold text-white flex items-center">
-                                <i className={`${selected.icon} text-${selected.color}-400 mr-3`}></i>
-                                {selected.title}
+                            <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center">
+                                <i className={`${selected.icon} text-${selected.color}-400 mr-2 sm:mr-3 text-lg sm:text-xl`}></i>
+                                <span className='txt-responsive'>{selected.title}</span>
                             </h3>
                             <button 
-                                className="p-2 text-gray-400 hover:text-white rounded-full bg-slate-700/50 hover:bg-slate-700 transition-all duration-200"
+                                className="p-1 sm:p-2 text-gray-400 hover:text-white rounded-full bg-slate-700/50 hover:bg-slate-700 transition-all duration-200"
                                 onClick={onClose}
                                 aria-label="Fermer la modal"
                             >
-                                <i className="fas fa-times"></i>
+                                <i className="fas fa-times text-sm sm:text-base"></i>
                             </button>
                         </div>
                     </div>
                     
                     {/* Contenu */}
-                    <div className="overflow-y-auto max-h-[70vh] p-6">
-                        <div className="mb-6">
-                            <h4 className="text-lg font-semibold text-white mb-3">Description</h4>
-                            <p className="text-gray-400 leading-relaxed">
+                    <div className="overflow-y-auto max-h-[calc(100vh-450px)] sm:max-h-[70vh] p-4 sm:p-6">
+                        <div className="mb-4 sm:mb-6">
+                            <h4 className="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3">Description</h4>
+                            <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
                                 {selected.description}
                             </p>
                         </div>
                         
-                        <div className="mb-6">
-                            <h4 className="text-lg font-semibold text-white mb-3">Services Offerts</h4>
-                            <ul className="space-y-2">
+                        <div className="mb-4 sm:mb-6">
+                            <h4 className="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3">Services Offerts</h4>
+                            <ul className="space-y-1 sm:space-y-2">
                                 {selected.features.map((feature, index) => (
                                     <li key={index} className="flex items-start">
-                                        <i className={`fas fa-check-circle text-${selected.color}-400 mt-1 mr-3`}></i>
-                                        <span className="text-gray-400 flex-1">{feature}</span>
+                                        <i className={`fas fa-check-circle text-${selected.color}-400 mt-1 mr-2 sm:mr-3 text-xs sm:text-sm`}></i>
+                                        <span className="text-gray-400 flex-1 text-sm sm:text-base">{feature}</span>
                                     </li>
                                 ))}
                             </ul>
                         </div>
                         
                         <div>
-                            <h4 className="text-lg font-semibold text-white mb-3">Technologies utilisées</h4>
-                            <div className="flex flex-wrap gap-2">
+                            <h4 className="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3">Technologies utilisées</h4>
+                            <div className="flex flex-wrap gap-1 sm:gap-2">
                                 {selected.technologies.map((tech, index) => (
                                     <span 
                                         key={index} 
-                                        className={`text-sm px-3 py-1.5 rounded-full bg-slate-700 text-slate-300 hover:bg-${selected.color}-500/20 hover:text-${selected.color}-400 transition-colors duration-200`}
+                                        className={`text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-slate-700 text-slate-300 hover:bg-${selected.color}-500/20 hover:text-${selected.color}-400 transition-colors duration-200`}
                                     >
                                         {tech}
                                     </span>
@@ -898,19 +898,19 @@ const IndexPages: React.FC = () => {
                     </div>
                     
                     {/* Footer */}
-                    <div className="sticky bottom-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent backdrop-blur-sm px-6 py-4 flex items-center justify-between border-t border-slate-700/50">
-                        <div className="flex items-center text-sm text-slate-400">                            
-                            <p><i className="fas fa-info-circle mr-2 text-indigo-400"></i> <span className='size'>Bien plus selon vos besoins</span></p>
+                    <div className="bordert sticky bottom-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent backdrop-blur-sm px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row items-center justify-between border-t border-slate-700/50">
+                        <div className="flex items-center text-xs sm:text-sm text-slate-400 mb-2 sm:mb-0">                            
+                            <p><i className="fas fa-info-circle mr-1 sm:mr-2 text-indigo-400"></i> <span>Bien plus selon vos besoins</span></p>
                         </div>
                         <button 
                             onClick={onClose}
-                            className={`px-5 py-2 rounded-lg font-medium transition-all duration-300 flex items-center 
+                            className={`px-3 sm:px-5 py-1 sm:py-2 rounded-lg font-medium transition-all duration-300 flex items-center 
                                 bg-${selected.color}-500/10 borders border-${selected.color}-500/20 
                                 text-${selected.color}-400 hover:text-white hover:bg-${selected.color}-500/20 
-                                shadow-sm hover:shadow-md`}
+                                shadow-sm hover:shadow-md text-sm sm:text-base`}
                         >
                             <span>Fermer</span>
-                            <i className="fas fa-times ml-2 text-sm"></i>
+                            <i className="fas fa-times ml-1 sm:ml-2 text-xs sm:text-sm"></i>
                         </button>
                     </div>
                 </div>
@@ -1261,8 +1261,8 @@ const IndexPages: React.FC = () => {
                                 </a>
                                 
                                 <a href="#contact" className="hover-moderne px-6 py-3 border border-gray-600 hover:border-indigo-400 text-white hover:text-indigo-400 font-medium rounded-full transition-all-smooth flex items-center">
-                                    <span>Contactez-moi</span>
-                                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <span className='invisible-responsive'>Contactez-moi</span>
+                                    <svg className="icon-responsive w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                                     </svg>
                                 </a>
