@@ -447,6 +447,15 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.4em !important;
 }
 
+.size{
+  font-size: 1.2em !important;
+  color: #ffffffdd;
+}
+
+.borders{
+  border-top: 1px solid #ffffff11 !important;
+}
+
 @media (max-width: 1415px) {
   .none-responsive{
     display: none !important;
@@ -465,6 +474,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
+  .size-responsive{
+    font-size: 0.7em !important;
+  }
+
   .size{
     width: 100% !important;
     height: 100% !important;
@@ -481,6 +494,53 @@ h1, h2, h3, h4, h5, h6 {
   .responsive-margin{
     padding-top: 2rem !important;
   }
+}
+
+@media (max-width: 650px) {
+  .txt{
+    font-size: 1em !important;
+  }
+}
+
+@media (max-width: 563px) {
+  .txt{
+    font-size: 0.88em !important;
+  }
+}
+
+
+
+
+
+
+
+.Toastify__toast {
+    background-color: #1e293b; /* Couleur de fond similaire à votre thème */
+    color: #e2e8f0;
+    border-radius: 0.5rem;
+    border: 1px solid #334155;
+}
+
+.Toastify__progress-bar {
+    background: linear-gradient(to right, #6366f1, #8b5cf6);
+}
+
+.Toastify__close-button {
+    color: #94a3b8;
+}
+
+/* Chargement btn envoyer sms  */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
 }
 
 

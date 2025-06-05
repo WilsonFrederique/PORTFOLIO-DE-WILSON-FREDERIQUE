@@ -6,6 +6,9 @@ import CV from '/CV_Wilson_Frederique.pdf';
 import Profil2 from '../assets/images/3021.jpg';
 import AndroidStudio from '../assets/images/android.png';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 type Project = {
   id: number;
   title: string;
@@ -24,7 +27,7 @@ const additionalProjects: Project[] = [
     id: 4,
     title: "Gestion des emplois du temps et des salles",
     description: "Conception et développement d’une application web complète permettant la gestion centralisée des emplois du temps et l’organisation des salles de classe au sein d’un établissement. L’application offre une interface intuitive permettant aux administrateurs de planifier les cours, d’assigner des salles, d’éviter les conflits de réservation et de visualiser les emplois du temps en temps réel. Le projet a été réalisé en utilisant React pour le développement du front-end, Express.js pour la création d’une API REST sécurisée, et MySQL pour le stockage structuré et fiable des données.",
-    tags: ["React", "TypeScript", "HTML & CSS", "Express", "MySQL", "API REST"],
+    tags: ["React", "TypeScript", "Express", "MySQL", "API REST", "HTML & CSS"],
     githubUrl: "https://github.com/WilsonFrederique/GESTION-EDT-ET-SALLE-DE-CLASSE.git",
     type: "Full Stack",
     gradientFrom: "from-blue-500/20",
@@ -48,7 +51,7 @@ const additionalProjects: Project[] = [
     description: "Conception de l’interface front-end d’un clone de WhatsApp avec messagerie, notifications et gestion des utilisateurs.",
     tags: ["Flutter"],
     githubUrl: "https://github.com/WilsonFrederique/Plateforme-de-communication-mobile.git",
-    demoUrl: "#",
+    // demoUrl: "#",
     type: "Mobile",
     gradientFrom: "from-orange-500/20",
     gradientTo: "to-yellow-500/20",
@@ -190,6 +193,9 @@ const additionalProjects: Project[] = [
 ];
 
 const IndexPages: React.FC = () => {
+
+    const [result, setResult] = useState<string>("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const [showMoreProjects, setShowMoreProjects] = useState(false);
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -383,6 +389,7 @@ const IndexPages: React.FC = () => {
         };
     }, []);
 
+    // Plus de projet 
     const ProjectsModal = () => {
         if (!showMoreProjects) return null;
 
@@ -421,7 +428,7 @@ const IndexPages: React.FC = () => {
                                 Mes Projets Supplémentaires
                             </h3>
                             <button 
-                                className="p-2 text-gray-400 hover:text-white rounded-full hover:bg-slate-700 transition-all duration-200"
+                                className="p-2 text-gray-400 hover:text-white rounded-full bg-slate-900/30 hover:bg-slate-700 transition-all duration-200"
                                 onClick={() => setShowMoreProjects(false)}
                                 aria-label="Fermer la modal"
                             >
@@ -521,6 +528,7 @@ const IndexPages: React.FC = () => {
         );
     };
 
+    // Detail Projet 
     const ProjectDetailModal = () => {
         if (!selectedProject) return null;
 
@@ -551,7 +559,7 @@ const IndexPages: React.FC = () => {
                 ></div>
                 
                 {/* Contenu principal de la modal */}
-                <div className="relative w-full max-w-4xl bg-slate-800 rounded-xl shadow-2xl border border-slate-700 overflow-hidden flex flex-col max-h-[90vh] animate-scale-in">
+                <div className="relative w-full max-w-4xl bg-slate-800 rounded-xl shadow-2xl borderSeb border-slate-700 overflow-hidden flex flex-col max-h-[90vh] animate-scale-in">
                     {/* Bouton de fermeture */}
                     <button 
                         className="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200 bg-slate-800/50 rounded-full hover:bg-slate-700/70 shadow-lg"
@@ -572,7 +580,7 @@ const IndexPages: React.FC = () => {
                         <div className={`absolute inset-0 bg-gradient-to-r ${selectedProject.gradientFrom} ${selectedProject.gradientTo} opacity-70 transition-opacity duration-300`}></div>
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/70"></div>
                         <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6">
-                            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white drop-shadow-lg">{selectedProject.title}</h3>
+                            <h3 className="size-responsive text-xl sm:text-2xl md:text-3xl font-bold text-white drop-shadow-lg">{selectedProject.title}</h3>
                             <div className="flex items-center mt-2 flex-wrap gap-2">
                                 <span className="text-xs px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 backdrop-blur-sm">
                                     <i className={`fas fa-${selectedProject.type === 'Mobile' ? 'mobile-alt' : 'globe'} mr-1 text-[0.6rem]`}></i> 
@@ -620,7 +628,7 @@ const IndexPages: React.FC = () => {
                             </div>
 
                             {/* Liens et détails techniques */}
-                            <div className="bg-slate-700/30 rounded-xl p-4 sm:p-6 border border-slate-700 hover:border-slate-600 transition-colors duration-300">
+                            <div className="bg-slate-700/30 rounded-xl p-4 sm:p-6 borderSe border-slate-700 hover:border-slate-600 transition-colors duration-300">
                                 <div className="space-y-6">
                                     {/* Liens */}
                                     <div>
@@ -716,7 +724,7 @@ const IndexPages: React.FC = () => {
                     </div>
 
                     {/* Pied de page avec bouton de fermeture */}
-                    <div className="sticky bottom-0 bg-gradient-to-t from-slate-800 to-transparent pt-8 pb-4 px-6 flex justify-end">
+                    <div className="borders sticky bottom-0 from-slate-800 to-transparent pt-8 pb-4 px-6 flex justify-end">
                         <button 
                             onClick={() => setSelectedProject(null)}
                             className="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-full font-medium transition-all duration-300 flex items-center shadow hover:shadow-lg"
@@ -730,11 +738,12 @@ const IndexPages: React.FC = () => {
         );
     };
 
+    // Service 
     type ServiceDetailModalProps = {
         service: string;
         onClose: () => void;
     };
-
+    // Service mODAL
     const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({ service, onClose }) => {
         const services = {
             'web-dev': {
@@ -743,13 +752,14 @@ const IndexPages: React.FC = () => {
                 color: "indigo",
                 description: "Je crée des sites web modernes, performants et entièrement responsives, adaptés aux besoins spécifiques de votre entreprise. Mes solutions sur mesure utilisent les dernières technologies web pour offrir une expérience utilisateur exceptionnelle.",
                 features: [
-                    "Sites vitrine et applications web complexes",
-                    "Design responsive et adaptatif",
-                    "Optimisation des performances",
-                    "Intégration de CMS (WordPress, etc.)",
-                    "Solutions e-commerce"
+                    "Sites vitrines modernes et responsives",
+                    "Applications web sur mesure",
+                    "Plateformes e-commerce",
+                    "Système de prêt de documents",
+                    "Gestion des commandes et facturation",
+                    "Suivi des prestations sociales"
                 ],
-                technologies: ["React", "Vue.js", "TypeScript", "Node.js", "Express", "Laravel"]
+                technologies: ["React", "Vue.js", "TypeScript", "Node.js", "Express", "Laravel", "PHP", "MySQL", "PostgreSQL", "HTML5 & CSS3", "JavaScript"]
             },
             'frontend': {
                 title: "Intégration Front-end",
@@ -759,11 +769,12 @@ const IndexPages: React.FC = () => {
                 features: [
                     "Interfaces utilisateur réactives",
                     "Animations fluides et modernes",
-                    "Accessibilité (WCAG)",
-                    "Optimisation SEO technique",
-                    "Tests cross-browser"
+                    "Optimisation des performances",
+                    "Compatibilité multi-navigateurs",
+                    "Maintenance et support technique",
+                    "Tests utilisateurs"
                 ],
-                technologies: ["HTML5", "CSS3", "JavaScript", "React", "TypeScript", "Bootstrap", "Tailwind CSS"]
+                technologies: ["HTML5", "CSS3", "JavaScript", "React", "TypeScript", "Vue.js", "Bootstrap", "Tailwind CSS"]
             },
             'maintenance': {
                 title: "Maintenance & Optimisation",
@@ -785,13 +796,13 @@ const IndexPages: React.FC = () => {
                 color: "purple",
                 description: "Je transforme vos processus métiers en solutions numériques efficaces pour automatiser les tâches répétitives, améliorer la productivité et réduire les erreurs humaines.",
                 features: [
-                    "Automatisation des workflows",
+                    "Workflows personnalisés",
+                    "Tableaux de bord analytiques",
+                    "Intégration avec systèmes existants",
                     "Solutions sur mesure",
-                    "Interfaces intuitives",
-                    "Formation des équipes",
-                    "Support continu"
+                    "Interfaces intuitives"
                 ],
-                technologies: ["Laravel", "Node.js", "Express", "React", "TypeScript"]
+                technologies: ["HTML5 & CSS3", "React", "TypeScript", "Vue.js", "Node.js", "Express", "Laravel", "MySQL", "PostgreSQL", "API REST"]
             },
             'database': {
                 title: "Bases de Données",
@@ -801,9 +812,7 @@ const IndexPages: React.FC = () => {
                 features: [
                     "Conception de schémas relationnels",
                     "Optimisation des requêtes",
-                    "Migration de données",
-                    "Sauvegardes automatisées",
-                    "Sécurité avancée"
+                    "Migration de données"
                 ],
                 technologies: ["MySQL", "PostgreSQL", "SQLite"]
             },
@@ -813,11 +822,11 @@ const IndexPages: React.FC = () => {
                 color: "red",
                 description: "Je développe des API modernes, sécurisées et documentées qui permettent à vos différents systèmes de communiquer efficacement entre eux.",
                 features: [
-                    "Architecture RESTful",
+                    "Conception d'API RESTful selon les standards",
                     "Authentification sécurisée",
-                    "Documentation Swagger/OpenAPI",
-                    "Versioning d'API",
-                    "Tests automatisés"
+                    "Intégration avec systèmes existants",
+                    "Système de pagination",
+                    "Versioning des API"
                 ],
                 technologies: ["Node & Express.js", "Laravel", "API REST", "OAuth2", "Postman"]
             }
@@ -843,7 +852,7 @@ const IndexPages: React.FC = () => {
                                 {selected.title}
                             </h3>
                             <button 
-                                className="p-2 text-gray-400 hover:text-white rounded-full hover:bg-slate-700 transition-all duration-200"
+                                className="p-2 text-gray-400 hover:text-white rounded-full bg-slate-700/50 hover:bg-slate-700 transition-all duration-200"
                                 onClick={onClose}
                                 aria-label="Fermer la modal"
                             >
@@ -862,7 +871,7 @@ const IndexPages: React.FC = () => {
                         </div>
                         
                         <div className="mb-6">
-                            <h4 className="text-lg font-semibold text-white mb-3">Fonctionnalités clés</h4>
+                            <h4 className="text-lg font-semibold text-white mb-3">Services Offerts</h4>
                             <ul className="space-y-2">
                                 {selected.features.map((feature, index) => (
                                     <li key={index} className="flex items-start">
@@ -889,18 +898,77 @@ const IndexPages: React.FC = () => {
                     </div>
                     
                     {/* Footer */}
-                    <div className="sticky bottom-0 bg-slate-900/30 from-slate-800 to-transparent pt-6 pb-4 px-6 flex justify-end">
+                    <div className="sticky bottom-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent backdrop-blur-sm px-6 py-4 flex items-center justify-between border-t border-slate-700/50">
+                        <div className="flex items-center text-sm text-slate-400">                            
+                            <p><i className="fas fa-info-circle mr-2 text-indigo-400"></i> <span className='size'>Bien plus selon vos besoins</span></p>
+                        </div>
                         <button 
                             onClick={onClose}
-                            className={`px-6 py-2 bg-${selected.color}-500/10 borderSeb border-${selected.color}-500/30 text-${selected.color}-400 hover:text-white hover:bg-${selected.color}-500/20 rounded-lg font-medium transition-all duration-300 flex items-center shadow hover:shadow-lg`}
+                            className={`px-5 py-2 rounded-lg font-medium transition-all duration-300 flex items-center 
+                                bg-${selected.color}-500/10 borders border-${selected.color}-500/20 
+                                text-${selected.color}-400 hover:text-white hover:bg-${selected.color}-500/20 
+                                shadow-sm hover:shadow-md`}
                         >
                             <span>Fermer</span>
-                            <i className="fas fa-times ml-2"></i>
+                            <i className="fas fa-times ml-2 text-sm"></i>
                         </button>
                     </div>
                 </div>
             </div>
         );
+    };
+
+
+    // Gestion de l'envoi du formulaire de contact
+    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setIsLoading(true); // Active l'état de chargement
+        setResult("Sending...");
+
+        try {
+            const formData = new FormData(event.currentTarget);
+            const objetInput = event.currentTarget.elements.namedItem("objet") as HTMLInputElement;
+            if (objetInput && !formData.get("objet")) {
+                formData.append("objet", objetInput.value);
+            }
+
+            formData.append("access_key", "325c281e-dbbb-45d2-b20f-49ea0d8250a9");
+
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                toast.success("Message envoyé avec succès !", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                event.currentTarget.reset();
+            } else {
+                console.error("Error", data);
+                toast.error(data.message || "Une erreur s'est produite", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+        } catch (error) {
+            console.error("Request failed", error);
+        } finally {
+            setIsLoading(false); // Désactive l'état de chargement
+        }
     };
 
     return (
@@ -948,6 +1016,9 @@ const IndexPages: React.FC = () => {
                         </a>
                         <a href="#projects" className="block text-white hover:text-indigo-300 transition-all-smooth font-medium menu-item flex items-center">
                             <i className="fas fa-project-diagram mr-3 text-purple-400 w-4 text-center"></i>Projets
+                        </a>
+                        <a href="#services" className="block text-white hover:text-indigo-300 transition-all-smooth font-medium menu-item flex items-center">
+                            <i className="fas fa-handshake mr-3 text-yellow-700 w-4 text-center"></i>Services
                         </a>
                         <a href="#contact" className="block text-white hover:text-indigo-300 transition-all-smooth font-medium menu-item flex items-center">
                             <i className="fas fa-envelope mr-3 text-yellow-400 w-4 text-center"></i>Contact
@@ -1004,16 +1075,16 @@ const IndexPages: React.FC = () => {
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                                     </svg>
                                 </a>
-                            </div>                    
+                            </div>                   
                             
                             <div className="mt-12 flex justify-center md:justify-start space-x-6 animate-delay-600">
-                                <a href="#" className="w-10 h-10 bg-slate-700/50 hover:bg-cyan-400/10 rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 transition-all duration-300 shadow">
+                                <a href="https://github.com/WilsonFrederique" className="w-10 h-10 bg-slate-700/50 hover:bg-cyan-400/10 rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 transition-all duration-300 shadow">
                                     <i className="fab fa-github text-lg"></i>
                                 </a>
-                                <a href="#" className="w-10 h-10 bg-slate-700/50 hover:bg-cyan-400/10 rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 transition-all duration-300 shadow">
+                                <a href="https://www.linkedin.com/in/wilson-frederique-500b82352?" className="w-10 h-10 bg-slate-700/50 hover:bg-cyan-400/10 rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 transition-all duration-300 shadow">
                                     <i className="fab fa-linkedin-in text-lg"></i>
                                 </a>
-                                <a href="#" className="w-10 h-10 bg-slate-700/50 hover:bg-cyan-400/10 rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 transition-all duration-300 shadow">
+                                <a href="https://www.facebook.com/walle.fred" className="w-10 h-10 bg-slate-700/50 hover:bg-cyan-400/10 rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 transition-all duration-300 shadow">
                                     <i className="fab fa-facebook text-lg"></i>
                                 </a>
                                 <a href="#" className="w-10 h-10 bg-slate-700/50 hover:bg-cyan-400/10 rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 transition-all duration-300 shadow">
@@ -1085,16 +1156,16 @@ const IndexPages: React.FC = () => {
                     </a>
                 </div>
             </section>
-
+            
             {/* <!-- Social Media Floating Bar --> */}
             <div className="fixed none-responsive left-responsive bottom-1/2 transform translate-y-1/2 hidden lg:flex flex-col items-center space-y-4 z-20">
-                <a href="#" className="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
+                <a href="https://github.com/WilsonFrederique" className="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
                     <i className="fab fa-github"></i>
                 </a>
-                <a href="#" className="w-10 h-10 bg-slate-800 hover:bg-blue-400 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
+                <a href="https://www.linkedin.com/in/wilson-frederique-500b82352?" className="w-10 h-10 bg-slate-800 hover:bg-blue-400 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
                     <i className="fab fa-linkedin-in"></i>
                 </a>
-                <a href="#" className="w-10 h-10 bg-slate-800 hover:bg-cyan-400 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
+                <a href="https://www.facebook.com/walle.fred" className="w-10 h-10 bg-slate-800 hover:bg-cyan-400 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
                     <i className="fab fa-facebook"></i>
                 </a>
                 <a href="#" className="w-10 h-10 bg-slate-800 hover:bg-cyan-400 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
@@ -1505,52 +1576,52 @@ const IndexPages: React.FC = () => {
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {/* <!-- Project 1 --> */}
+                        {/* Project 1 */}
                         <div className="relative overflow-hidden rounded-xl project-card bg-slate-800 hover:bg-slate-700/50 transition-all-smooth card-hover">
                             <div className="h-48 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 flex items-center justify-center relative">
                                 <i className="fas fa-graduation-cap text-6xl text-white opacity-20"></i>
                                 <div className="absolute top-4 right-4">
-                                    <span className="text-xs px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300"><i className="fas fa-globe mr-1 text-[0.5rem] xs:text-[0.55rem] sm:text-[0.6rem]"></i> Full Stack</span>
+                                    <span className="text-xs px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300">
+                                        <i className="fas fa-globe mr-1 text-[0.5rem] xs:text-[0.55rem] sm:text-[0.6rem]"></i> Full Stack
+                                    </span>
                                 </div>
                             </div>
                             <div className="p-6">
-                                <h3 className="text-xl font-bold mb-3 text-white">Organisation des emplois du temps et des salles de classe</h3>
-                                <p className="text-gray-400 mb-5">
-                                    Application web pour gérer les emplois du temps et les salles,
-                                    développée avec React, Express.js et MySQL.
+                                <h3 className="text-xl font-bold mb-3 text-white">{additionalProjects[0].title}</h3>
+                                <p className="text-gray-400 mb-5 line-clamp-3">
+                                    {additionalProjects[0].description}
                                 </p>
                                 <div className="flex flex-wrap gap-2 mb-4">
-                                    <span className="text-xs px-3 py-1 rounded-full bg-slate-700 text-slate-300">React</span>
-                                    <span className="text-xs px-3 py-1 rounded-full bg-slate-700 text-slate-300">Express</span>
-                                    <span className="text-xs px-3 py-1 rounded-full bg-slate-700 text-slate-300">MySQL</span>
-                                    <span className="text-xs px-3 py-1 rounded-full bg-slate-700 text-slate-300">API REST</span>
+                                    {additionalProjects[0].tags.slice(0, 3).map((tag, index) => (
+                                        <span key={index} className="text-xs px-3 py-1 rounded-full bg-slate-700 text-slate-300">
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
                                 <div className="flex justify-between items-center">
-                                    {/* Lien Visiter */}
-                                    <a 
-                                        href="#" 
+                                    {/* Lien Détails */}
+                                    <button 
+                                        onClick={() => setSelectedProject(additionalProjects[0])}
                                         className="a-btn text-sm font-medium text-indigo-400 hover:text-white transition-all-smooth flex items-center group"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
                                     >
                                         <span className="relative z-10 flex items-center">
-                                        <i className="fas fa-external-link-alt mr-2"></i> 
-                                        Visiter
+                                            <i className="fas fa-external-link-alt mr-2"></i> 
+                                            Détails
                                         </span>
                                         <span className="absolute bottom-0 left-0 w-0 h-px bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
-                                    </a>
+                                    </button>
 
                                     {/* Lien Code Source */}
                                     <a 
-                                        href="https://github.com/WilsonFrederique/GESTION-EDT-ET-SALLE-DE-CLASSE.git" 
+                                        href={additionalProjects[0].githubUrl} 
                                         className="a-btn text-sm font-medium text-gray-400 hover:text-white transition-all-smooth flex items-center group"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            window.open('https://github.com/WilsonFrederique/GESTION-EDT-ET-SALLE-DE-CLASSE.git', '_blank');
+                                            window.open(additionalProjects[0].githubUrl, '_blank');
                                         }}
-                                        >
+                                    >
                                         <span className="relative z-10 flex items-center">
                                             <i className="fab fa-github mr-2"></i> 
                                             Code source
@@ -1561,49 +1632,52 @@ const IndexPages: React.FC = () => {
                             </div>
                         </div>
                         
-                        {/* <!-- Project 2 --> */}
+                        {/* Project 2 */}
                         <div className="relative overflow-hidden rounded-xl project-card bg-slate-800 hover:bg-slate-700/50 transition-all-smooth card-hover">
                             <div className="h-48 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 flex items-center justify-center relative">
                                 <i className="fas fa-chart-line text-6xl text-white opacity-20"></i>
                                 <div className="absolute top-4 right-4">
-                                    <span className="text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300"><i className="fas fa-globe mr-1 text-[0.6rem]"></i> Full Stack</span>
+                                    <span className="text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300">
+                                        <i className="fas fa-globe mr-1 text-[0.6rem]"></i> Full Stack
+                                    </span>
                                 </div>
                             </div>
                             <div className="p-6">
-                                <h3 className="text-xl font-bold mb-3 text-white">Digitalisation des processus internes</h3>
-                                <p className="text-gray-400 mb-5">
-                                    Stage : Développement sécurisé d’une application web avec Laravel (Blade) et MySQL, visant à digitaliser les processus internes.
+                                <h3 className="text-xl font-bold mb-3 text-white">{additionalProjects[1].title}</h3>
+                                <p className="text-gray-400 mb-5 line-clamp-3">
+                                    {additionalProjects[1].description}
                                 </p>
                                 <div className="flex flex-wrap gap-2 mb-4">
-                                    <span className="text-xs px-3 py-1 rounded-full bg-slate-700 text-slate-300">Laravel</span>
-                                    <span className="text-xs px-3 py-1 rounded-full bg-slate-700 text-slate-300">MySQL</span>                                    
+                                    {additionalProjects[1].tags.slice(0, 4).map((tag, index) => (
+                                        <span key={index} className="text-xs px-3 py-1 rounded-full bg-slate-700 text-slate-300">
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
                                 <div className="flex justify-between items-center">
-                                    {/* Lien Visiter */}
-                                    <a 
-                                        href="#" 
+                                    {/* Lien Détails */}
+                                    <button 
+                                        onClick={() => setSelectedProject(additionalProjects[1])}
                                         className="a-btn text-sm font-medium text-indigo-400 hover:text-white transition-all-smooth flex items-center group"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
                                     >
                                         <span className="relative z-10 flex items-center">
-                                        <i className="fas fa-external-link-alt mr-2"></i> 
-                                        Visiter
+                                            <i className="fas fa-external-link-alt mr-2"></i> 
+                                            Détails
                                         </span>
                                         <span className="absolute bottom-0 left-0 w-0 h-px bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
-                                    </a>
+                                    </button>
 
                                     {/* Lien Code Source */}
                                     <a 
-                                        href="https://github.com/WilsonFrederique/DIGITALISATION.git" 
+                                        href={additionalProjects[1].githubUrl} 
                                         className="a-btn text-sm font-medium text-gray-400 hover:text-white transition-all-smooth flex items-center group"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            window.open('https://github.com/WilsonFrederique/DIGITALISATION.git', '_blank');
+                                            window.open(additionalProjects[1].githubUrl, '_blank');
                                         }}
-                                        >
+                                    >
                                         <span className="relative z-10 flex items-center">
                                             <i className="fab fa-github mr-2"></i> 
                                             Code source
@@ -1614,50 +1688,52 @@ const IndexPages: React.FC = () => {
                             </div>
                         </div>
                         
-                        {/* <!-- Project 3 --> */}
+                        {/* Project 3 */}
                         <div className="relative overflow-hidden rounded-xl project-card bg-slate-800 hover:bg-slate-700/50 transition-all-smooth card-hover">
                             <div className="h-48 bg-gradient-to-r from-pink-500/20 to-orange-500/20 flex items-center justify-center relative">
                                 <i className="fas fa-mobile-alt text-6xl text-white opacity-20"></i>
                                 <div className="absolute top-4 right-4">
-                                    <span className="text-xs px-3 py-1 rounded-full bg-pink-500/20 text-pink-300"><i className="fas fa-mobile-alt mr-1 text-[0.5rem] xs:text-[0.55rem] sm:text-[0.6rem]"></i> Mobile</span>
+                                    <span className="text-xs px-3 py-1 rounded-full bg-pink-500/20 text-pink-300">
+                                        <i className="fas fa-mobile-alt mr-1 text-[0.5rem] xs:text-[0.55rem] sm:text-[0.6rem]"></i> Mobile
+                                    </span>
                                 </div>
                             </div>
                             <div className="p-6">
-                                <h3 className="text-xl font-bold mb-3 text-white">Plateforme de communication mobile</h3>
-                                <p className="text-gray-400 mb-5">
-                                    Conception de l’interface front-end d’un clone de WhatsApp avec messagerie, notifications et gestion des utilisateurs.
+                                <h3 className="text-xl font-bold mb-3 text-white">{additionalProjects[2].title}</h3>
+                                <p className="text-gray-400 mb-5 line-clamp-3">
+                                    {additionalProjects[2].description}
                                 </p>
                                 <div className="flex flex-wrap gap-2 mb-4">
-                                    <span className="text-xs px-3 py-1 rounded-full bg-slate-700 text-slate-300">Flutter</span>
-                                    {/* <span className="text-xs px-3 py-1 rounded-full bg-slate-700 text-slate-300">Firebase</span>
-                                    <span className="text-xs px-3 py-1 rounded-full bg-slate-700 text-slate-300">Redux</span> */}
+                                    {additionalProjects[2].tags.slice(0, 4).map((tag, index) => (
+                                        <span key={index} className="text-xs px-3 py-1 rounded-full bg-slate-700 text-slate-300">
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
                                 <div className="flex justify-between items-center">
-                                    {/* Lien Visiter */}
-                                    <a 
-                                        href="#" 
+                                    {/* Lien Détails */}
+                                    <button 
+                                        onClick={() => setSelectedProject(additionalProjects[2])}
                                         className="a-btn text-sm font-medium text-indigo-400 hover:text-white transition-all-smooth flex items-center group"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
                                     >
                                         <span className="relative z-10 flex items-center">
-                                        <i className="fas fa-external-link-alt mr-2"></i> 
-                                        Visiter
+                                            <i className="fas fa-external-link-alt mr-2"></i> 
+                                            Détails
                                         </span>
                                         <span className="absolute bottom-0 left-0 w-0 h-px bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
-                                    </a>
+                                    </button>
 
                                     {/* Lien Code Source */}
                                     <a 
-                                        href="https://github.com/WilsonFrederique/Plateforme-de-communication-mobile.git" 
+                                        href={additionalProjects[2].githubUrl} 
                                         className="a-btn text-sm font-medium text-gray-400 hover:text-white transition-all-smooth flex items-center group"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            window.open('https://github.com/WilsonFrederique/Plateforme-de-communication-mobile.git', '_blank');
+                                            window.open(additionalProjects[2].githubUrl, '_blank');
                                         }}
-                                        >
+                                    >
                                         <span className="relative z-10 flex items-center">
                                             <i className="fab fa-github mr-2"></i> 
                                             Code source
@@ -1737,30 +1813,6 @@ const IndexPages: React.FC = () => {
                             </div>
                         </div>
                         
-                        {/* Service 3 - Maintenance */}
-                        <div className="relative group bg-slate-800/50 borderSe border-slate-700 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
-                            <div className="relative z-10">
-                                <div className="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400 group-hover:text-white transition-colors duration-300">
-                                    <i className="fas fa-tools text-2xl"></i>
-                                </div>
-                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-emerald-400 transition-colors duration-300">Maintenance & Optimisation</h3>
-                                <p className="text-gray-400 mb-6 leading-relaxed">
-                                    Maintenance, correction de bugs et optimisation pour améliorer la performance, l'accessibilité et le SEO de votre site web existant.
-                                </p>
-                                <button 
-                                    onClick={() => setSelectedService('maintenance')}
-                                    className="px-5 py-2 text-sm font-medium text-emerald-400 hover:text-white bg-slate-800/50 borderSeb border-emerald-500/20 rounded-lg hover:bg-emerald-500/10 transition-all duration-300 inline-flex items-center group"
-                                >
-                                    <span>En savoir plus</span>
-                                    <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    {/* Deuxième ligne de services */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {/* Service 4 - Digitalisation */}
                         <div className="relative group bg-slate-800/50 borderSe border-slate-700 rounded-2xl p-8 hover:border-purple-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
                             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
@@ -1781,7 +1833,10 @@ const IndexPages: React.FC = () => {
                                 </button>
                             </div>
                         </div>
-                        
+                    </div>
+                    
+                    {/* Deuxième ligne de services */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">                                               
                         {/* Service 5 - Bases de données */}
                         <div className="relative group bg-slate-800/50 borderSe border-slate-700 rounded-2xl p-8 hover:border-amber-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
                             <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-yellow-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
@@ -1823,6 +1878,27 @@ const IndexPages: React.FC = () => {
                                 </button>
                             </div>
                         </div>
+
+                        {/* Service 3 - Maintenance */}
+                        <div className="relative group bg-slate-800/50 borderSe border-slate-700 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500"></div>
+                            <div className="relative z-10">
+                                <div className="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400 group-hover:text-white transition-colors duration-300">
+                                    <i className="fas fa-tools text-2xl"></i>
+                                </div>
+                                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-emerald-400 transition-colors duration-300">Maintenance & Optimisation</h3>
+                                <p className="text-gray-400 mb-6 leading-relaxed">
+                                    Maintenance, correction de bugs et optimisation pour améliorer la performance, l'accessibilité et le SEO de votre site web existant.
+                                </p>
+                                <button 
+                                    onClick={() => setSelectedService('maintenance')}
+                                    className="px-5 py-2 text-sm font-medium text-emerald-400 hover:text-white bg-slate-800/50 borderSeb border-emerald-500/20 rounded-lg hover:bg-emerald-500/10 transition-all duration-300 inline-flex items-center group"
+                                >
+                                    <span>En savoir plus</span>
+                                    <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1850,7 +1926,7 @@ const IndexPages: React.FC = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {/* <!-- Contact form --> */}
                         <div className="bg-slate-800 borders border-slate-700 rounded-xl p-8 hover:shadow-xl transition-all-smooth">
-                            <form id="contact-form" className="space-y-6">
+                            <form onSubmit={onSubmit} className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Nom complet *</label>
@@ -1868,21 +1944,38 @@ const IndexPages: React.FC = () => {
                                 
                                 <div>
                                     <label htmlFor="subject" className="block text-sm font-medium text-gray-400 mb-2">Sujet *</label>
-                                    <input type="text" id="subject" name="subject" required 
+                                    <input type="text" id="objet" name="objet" required 
                                         className="w-full px-4 py-3 bg-slate-800 borders border-slate-700 rounded-lg text-white focus:border-indigo-400 focus:ring-1 focus:ring-indigo-500/50 transition-all-smooth" 
                                         placeholder="Objet du message" />
                                 </div>
                                 
                                 <div>
                                     <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">Message *</label>
-                                    <textarea id="message" name="message" rows={5} required 
+                                    <textarea name="message" id="message" rows={5} required 
                                         className="w-full px-4 py-3 bg-slate-800 borders border-slate-700 rounded-lg text-white focus:border-indigo-400 focus:ring-1 focus:ring-indigo-500/50 transition-all-smooth" 
                                         placeholder="Décrivez votre projet ou votre demande..."></textarea>
                                 </div>
                                 
-                                <button type="submit" className="w-full px-6 py-3 gradient-bg text-white rounded-lg font-medium hover:shadow-lg transition-all-smooth transform hover:-translate-y-0.5 flex items-center justify-center">
-                                    <span>Envoyer le message</span>
-                                    <i className="fas fa-paper-plane ml-2"></i>
+                                <button 
+                                    type="submit" 
+                                    className="w-full px-6 py-3 gradient-bg text-white rounded-lg font-medium hover:shadow-lg transition-all-smooth transform hover:-translate-y-0.5 flex items-center justify-center"
+                                    disabled={isLoading}
+                                >
+                                    {isLoading ? (
+                                        <div className="flex items-center justify-center">
+                                            {/* Animation spirale */}
+                                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            Envoi en cours...
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <span>Envoyer le message</span>
+                                            <i className="fas fa-paper-plane ml-2"></i>
+                                        </>
+                                    )}
                                 </button>
                             </form>
                         </div>
@@ -1902,7 +1995,7 @@ const IndexPages: React.FC = () => {
                                     </div>
                                     <div>
                                         <h4 className="text-sm font-medium text-gray-400 mb-1">Email</h4>
-                                        <a href="mailto:wilsonfrederique3@gmail.com" className="text-white hover:text-indigo-400 transition-all-smooth">wilsonfrederique3@gmail.com</a>
+                                        <a href="mailto:wilsonfrederique3@gmail.com" className="txt text-white hover:text-indigo-400 transition-all-smooth">wilsonfrederique3@gmail.com</a>
                                     </div>
                                 </div>
                                 
@@ -1912,7 +2005,7 @@ const IndexPages: React.FC = () => {
                                     </div>
                                     <div>
                                         <h4 className="text-sm font-medium text-gray-400 mb-1">Téléphone</h4>
-                                        <a href="tel:+261340000000" className="text-white hover:text-indigo-400 transition-all-smooth">+261 34 45 961 17</a>
+                                        <a href="tel:+261344596117" className="txt text-white hover:text-indigo-400 transition-all-smooth">+261 34 45 961 17</a>
                                     </div>
                                 </div>
                                 
@@ -1922,21 +2015,21 @@ const IndexPages: React.FC = () => {
                                     </div>
                                     <div>
                                         <h4 className="text-sm font-medium text-gray-400 mb-1">Localisation</h4>
-                                        <p className="text-white">Fianarantsoa, Madagascar</p>
+                                        <p className="txt text-white">Fianarantsoa, Madagascar</p>
                                     </div>
                                 </div>
                             </div>
-                            
+                                                       
                             <div className="mt-8">
                                 <h4 className="text-sm font-medium text-gray-400 mb-4">Réseaux sociaux</h4>
                                 <div className="flex space-x-4">
-                                    <a href="#" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
+                                    <a href="https://github.com/WilsonFrederique" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
                                         <i className="fab fa-github"></i>
                                     </a>
-                                    <a href="#" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
+                                    <a href="https://www.linkedin.com/in/wilson-frederique-500b82352?" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
                                         <i className="fab fa-linkedin-in"></i>
                                     </a>
-                                    <a href="#" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
+                                    <a href="https://www.facebook.com/walle.fred" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
                                         <i className="fab fa-facebook"></i>
                                     </a>
                                     <a href="#" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
@@ -1964,17 +2057,18 @@ const IndexPages: React.FC = () => {
                             <a href="#about" className="hover:text-white transition-all-smooth">À propos</a>
                             <a href="#skills" className="hover:text-white transition-all-smooth">Compétences</a>
                             <a href="#projects" className="hover:text-white transition-all-smooth">Projets</a>
+                            <a href="#services" className="hover:text-white transition-all-smooth">Services</a>
                             <a href="#contact" className="hover:text-white transition-all-smooth">Contact</a>
                         </div>
                         
                         <div className="flex space-x-6">
-                            <a href="#" className="hover:text-indigo-400 transition-all-smooth">
+                            <a href="https://github.com/WilsonFrederique" className="hover:text-indigo-400 transition-all-smooth">
                                 <i className="fab fa-github"></i>
                             </a>
-                            <a href="#" className="hover:text-indigo-400 transition-all-smooth">
+                            <a href="https://www.linkedin.com/in/wilson-frederique-500b82352?" className="hover:text-indigo-400 transition-all-smooth">
                                 <i className="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="#" className="hover:text-indigo-400 transition-all-smooth">
+                            <a href="https://www.facebook.com/walle.fred" className="hover:text-indigo-400 transition-all-smooth">
                                 <i className="fab fa-facebook"></i>
                             </a>
                             <a href="#" className="hover:text-indigo-400 transition-all-smooth">
@@ -1993,6 +2087,19 @@ const IndexPages: React.FC = () => {
             <button id="back-to-top" className="fixed bottom-8 right-8 w-12 h-12 gradient-bg rounded-full text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all opacity-0 invisible z-40">
                 <i className="fas fa-arrow-up"></i>
             </button>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
 
         </div>
     );
