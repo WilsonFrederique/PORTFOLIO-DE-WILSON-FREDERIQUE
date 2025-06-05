@@ -921,7 +921,10 @@ const IndexPages: React.FC = () => {
                     <i className="fab fa-linkedin-in"></i>
                 </a>
                 <a href="#" className="w-10 h-10 bg-slate-800 hover:bg-cyan-400 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
-                    <i className="fab fa-twitter"></i>
+                    <i className="fab fa-facebook"></i>
+                </a>
+                <a href="#" className="w-10 h-10 bg-slate-800 hover:bg-cyan-400 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
+                    <i className="fab fa-dribbble"></i>
                 </a>
                 <div className="w-px h-20 bg-gradient-to-b from-transparent via-blue-500 to-transparent mx-auto"></div>
             </div>
@@ -949,11 +952,12 @@ const IndexPages: React.FC = () => {
                     <div className="flex flex-col lg:flex-row gap-12 items-center">
                         {/* <!-- About Image --> */}
                         <div className="lg:w-2/5 mb-12 lg:mb-0 flex justify-center animate-fade-in">
-                            <div className="relative size md:w-80 md:h-80 hexagon gradient-border overflow-hidden shadow-2xl">
+                            {/* <div className="relative size md:w-80 md:h-80 hexagon gradient-border overflow-hidden shadow-2xl"> */}
+                                <div className="size md:w-80 md:h-80 hexagon overflow-hidden shadow-2xl">
                                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 to-emerald-500/30 z-10"></div>
                                 <img src={Profil2}
                                     alt="Wilson Frederique"
-                                    className=" h-full object-cover" />
+                                    className="h-full object-cover" />
                             </div>
                         </div>
                         
@@ -1649,7 +1653,7 @@ const IndexPages: React.FC = () => {
                                     </div>
                                     <div>
                                         <h4 className="text-sm font-medium text-gray-400 mb-1">Email</h4>
-                                        <a href="mailto:wilson@example.com" className="text-white hover:text-indigo-400 transition-all-smooth">wilson.frederique@example.com</a>
+                                        <a href="mailto:wilsonfrederique3@gmail.com" className="text-white hover:text-indigo-400 transition-all-smooth">wilsonfrederique3@gmail.com</a>
                                     </div>
                                 </div>
                                 
@@ -1659,7 +1663,7 @@ const IndexPages: React.FC = () => {
                                     </div>
                                     <div>
                                         <h4 className="text-sm font-medium text-gray-400 mb-1">Téléphone</h4>
-                                        <a href="tel:+261340000000" className="text-white hover:text-indigo-400 transition-all-smooth">+261 34 84 999 82</a>
+                                        <a href="tel:+261340000000" className="text-white hover:text-indigo-400 transition-all-smooth">+261 34 45 961 17</a>
                                     </div>
                                 </div>
                                 
@@ -1669,7 +1673,7 @@ const IndexPages: React.FC = () => {
                                     </div>
                                     <div>
                                         <h4 className="text-sm font-medium text-gray-400 mb-1">Localisation</h4>
-                                        <p className="text-white">Antananarivo, Madagascar</p>
+                                        <p className="text-white">Fianarantsoa, Madagascar</p>
                                     </div>
                                 </div>
                             </div>
@@ -1684,7 +1688,7 @@ const IndexPages: React.FC = () => {
                                         <i className="fab fa-linkedin-in"></i>
                                     </a>
                                     <a href="#" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
-                                        <i className="fab fa-twitter"></i>
+                                        <i className="fab fa-facebook"></i>
                                     </a>
                                     <a href="#" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
                                         <i className="fab fa-dribbble"></i>
@@ -1722,7 +1726,7 @@ const IndexPages: React.FC = () => {
                                 <i className="fab fa-linkedin-in"></i>
                             </a>
                             <a href="#" className="hover:text-indigo-400 transition-all-smooth">
-                                <i className="fab fa-twitter"></i>
+                                <i className="fab fa-facebook"></i>
                             </a>
                             <a href="#" className="hover:text-indigo-400 transition-all-smooth">
                                 <i className="fab fa-dribbble"></i>
@@ -1731,7 +1735,7 @@ const IndexPages: React.FC = () => {
                     </div>
                     
                     <div className="border-t border-slate-800 pt-8 text-center text-sm">
-                        &copy; 2023 Wilson Frederique. Tous droits réservés.
+                        &copy; 2025 Wilson Frederique. Tous droits réservés.
                     </div>
                 </div>
             </footer>
