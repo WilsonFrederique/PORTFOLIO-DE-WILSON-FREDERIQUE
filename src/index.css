@@ -35,6 +35,10 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #ffffff2e !important;
 }
 
+.bordert{
+  border-top: 1px solid #ffffff19 !important;
+}
+
 .borderSe{
   border: 1px solid #ffffff46 !important;
 }
@@ -493,6 +497,31 @@ h1, h2, h3, h4, h5, h6 {
 
   .responsive-margin{
     padding-top: 2rem !important;
+  }
+
+  .h-responsive{
+    height: 700px !important;
+    position: relative !important;
+  }
+
+  .overflow-responsive{
+    overflow-y: auto !important;
+  }
+}
+
+@media (max-width: 568px) {
+  .txt-responsive{
+    font-size: 0.7em;
+  }
+}
+
+@media (max-width: 450px) {
+  .invisible-responsive{
+    display: none !important;
+  }
+
+  .icon-responsive{
+    margin-left: 0 !important;
   }
 }
 
