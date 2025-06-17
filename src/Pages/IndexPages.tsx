@@ -1058,7 +1058,7 @@ const IndexPages: React.FC = () => {
                             
                             <div className="responsive">
                                 <p className="responsive-txt text-left text-gray-400 text-base md:text-lg mb-8 max-w-lg  lg:mx-0">
-                                    Développeur Full Stack passionné, spécialisé en React.js, TypeScript, Node.js et Laravel, je conçois des interfaces web modernes offrant une expérience utilisateur fluide, intuitive et optimisée.
+                                    Développeur Full Stack passionné, spécialisé en React.js, TypeScript, Express.js, Node.js, PHP, Laravel, je conçois des interfaces web modernes offrant une expérience utilisateur fluide, intuitive et optimisée.
                                 </p>
                             </div>
                             
@@ -1106,7 +1106,7 @@ const IndexPages: React.FC = () => {
                                         <div className="code-filename text-sm">portfolio.tsx</div>
                                     </div>
                                     <div className="p-4 bg-slate-900 font-mono text-sm md:text-base">
-                                        <div className="text-emerald-400 mb-2">// Développeur Full Stack avec 5 ans d'expérience</div>
+                                        <div className="text-emerald-400 mb-2">// Développeur Full Stack avec 3 ans d'expérience</div>
                                         <div className="text-slate-400 mb-4">
                                             <span className="text-purple-400">const</span>{' '}
                                             <span className="text-blue-400">WilsonFrederique</span>{' '}
@@ -1117,11 +1117,10 @@ const IndexPages: React.FC = () => {
                                             skills: <span className="text-slate-400">[</span>
                                         </div>
                                         <div className="ml-8 text-amber-300 font-medium">
-                                            'HTML & CSS', 'JavaScript', 'React', 'Vue.js',
+                                            'HTML & CSS', 'JavaScript', 'React', 'TypeScript',
                                         </div>
                                         <div className="ml-8 text-amber-300 font-medium">
-                                            {/* 'TypeScript', 'Express', 'Laravel', 'Node.js', 'MySQL', 'PostgreSQL' */}
-                                            'TypeScript', 'Express', 'Laravel', 'Node.js'
+                                            'Express', 'PHP', 'Laravel', 'MySQL', 'PostgreSQL'
                                         </div>
                                         <div className="ml-4 text-sky-300">
                                             <span className="text-slate-400">],</span>
@@ -1231,8 +1230,8 @@ const IndexPages: React.FC = () => {
                             </div>
 
                             <div className="mb-7 flex gap-4 bg-slate-800 p-6 rounded-xl hover:bg-slate-700/70 transition duration-300 card-hover shadow-lg">
-                                <div className="w-14 h-14 bg-indigo-500/10 rounded-lg flex items-center justify-center text-indigo-400">
-                                    <i className="fas fa-desktop text-2xl"></i>
+                                <div className="w-12 h-12 bg-indigo-500/10 rounded-lg flex items-center justify-center mb-4 text-indigo-400">
+                                    <i className="size-icon fas fa-desktop text-2xl"></i>
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-semibold text-white">Développement Desktop</h3>
@@ -1285,7 +1284,7 @@ const IndexPages: React.FC = () => {
                                     <h4 className="text-xl font-bold mb-2 text-white">Développeur Full Stack</h4>
                                     <p className='text-gray-500 mb-3'>École Nationale d’Informatique, Fianarantsoa – Madagascar</p>
                                     <p className="text-gray-400">
-                                        Conception et développement d’applications web full stack en utilisant des technologies telles que React, TypeScript, Vue.js, Node.js, Express, Laravel, MySQL et PostgreSQL.
+                                        Conception et développement d’applications web full stack en utilisant des technologies telles que React, TypeScript, Express, Node.js, PHP, Laravel, MySQL et PostgreSQL.
                                         Encadrement d’une équipe de développeurs juniors et mise en œuvre de bonnes pratiques de développement.
                                     </p>
                                 </div>
@@ -1301,8 +1300,8 @@ const IndexPages: React.FC = () => {
                                     <h4 className="text-xl font-bold mb-2 text-white">Développeur Frontend</h4>
                                     <p className="text-gray-500 mb-3">École Nationale d’Informatique, Fianarantsoa – Madagascar</p>
                                     <p className="text-gray-400">
-                                        Développement d'interfaces utilisateur réactives avec React et Vue.js.
-                                        Collaboration étroite avec les designers pour des expériences utilisateur intuitives.
+                                        Développement d'interfaces utilisateur réactives avec React.js,
+                                        collaboration étroite avec les designers pour des expériences utilisateur intuitives.
                                     </p>
                                 </div>
                             </div>
@@ -1822,7 +1821,7 @@ const IndexPages: React.FC = () => {
                                 </div>
                                 <h3 className="text-xl font-bold mb-4 text-white group-hover:text-purple-400 transition-colors duration-300">Digitalisation</h3>
                                 <p className="text-gray-400 mb-6 leading-relaxed">
-                                    Développement de solutions numériques personnalisées pour automatiser et optimiser les processus internes des entreprises.
+                                    Développement d'applications sur mesure pour digitaliser et optimiser vos processus métiers, combinant performance technique et ergonomie intuitive.
                                 </p>
                                 <button 
                                     onClick={() => setSelectedService('digital')}
@@ -1846,7 +1845,7 @@ const IndexPages: React.FC = () => {
                                 </div>
                                 <h3 className="text-xl font-bold mb-4 text-white group-hover:text-amber-400 transition-colors duration-300">Bases de données</h3>
                                 <p className="text-gray-400 mb-6 leading-relaxed">
-                                    Gestion et intégration optimisée de bases de données MySQL et PostgreSQL pour des applications web sécurisées et performantes.
+                                    Conception et optimisation de bases MySQL & PostgreSQL, garantissant performance, sécurité et intégrité des données pour vos applications web.
                                 </p>
                                 <button 
                                     onClick={() => setSelectedService('database')}
