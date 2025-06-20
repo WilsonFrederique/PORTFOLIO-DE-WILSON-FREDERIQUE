@@ -1181,7 +1181,7 @@ const IndexPages: React.FC = () => {
                 <div className="w-px h-20 bg-gradient-to-b from-transparent via-emerald-500 to-transparent mx-auto"></div>
             </div>
 
-            {/* About */}
+            {/* About Section */}
             <section id="about" className="py-20 bg-slate-900/95">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-16">
@@ -1756,7 +1756,7 @@ const IndexPages: React.FC = () => {
                 </div>
             </section>
 
-            {/* Service  */}
+            {/* Service Section  */}
             <section id="services" className="py-20 bg-gradient-to-b from-slate-900 to-slate-950">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-16">
