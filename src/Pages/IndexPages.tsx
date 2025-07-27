@@ -1084,11 +1084,21 @@ const IndexPages: React.FC = () => {
                                 <a href="https://www.linkedin.com/in/wilson-frederique-500b82352?" className="w-10 h-10 bg-slate-700/50 hover:bg-cyan-400/10 rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 transition-all duration-300 shadow">
                                     <i className="fab fa-linkedin-in text-lg"></i>
                                 </a>
-                                <a href="https://www.facebook.com/walle.fred" className="w-10 h-10 bg-slate-700/50 hover:bg-cyan-400/10 rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 transition-all duration-300 shadow">
-                                    <i className="fab fa-facebook text-lg"></i>
+                                <a
+                                    href="https://wa.me/261344596117"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 bg-slate-700/50 hover:bg-green-400/10 rounded-full flex items-center justify-center text-gray-300 hover:text-green-400 transition-all duration-300 shadow"
+                                    >
+                                    <i className="fab fa-whatsapp text-lg"></i>
                                 </a>
-                                <a href="#" className="w-10 h-10 bg-slate-700/50 hover:bg-cyan-400/10 rounded-full flex items-center justify-center text-gray-300 hover:text-cyan-400 transition-all duration-300 shadow">
-                                    <i className="fab fa-codepen text-lg"></i>
+                                <a
+                                    href="https://discord.com/users/1384846261013975061"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 bg-slate-700/50 hover:bg-indigo-500/10 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all duration-300 shadow"
+                                    >
+                                    <i className="fab fa-discord text-lg"></i>
                                 </a>
                             </div>
                         </div>
@@ -1164,11 +1174,11 @@ const IndexPages: React.FC = () => {
                 <a href="https://www.linkedin.com/in/wilson-frederique-500b82352?" className="w-10 h-10 bg-slate-800 hover:bg-blue-400 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
                     <i className="fab fa-linkedin-in"></i>
                 </a>
-                <a href="https://www.facebook.com/walle.fred" className="w-10 h-10 bg-slate-800 hover:bg-cyan-400 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
-                    <i className="fab fa-facebook"></i>
+                <a href="https://wa.me/261344596117" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 hover:bg-green-400 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
+                    <i className="fab fa-whatsapp"></i>
                 </a>
-                <a href="#" className="w-10 h-10 bg-slate-800 hover:bg-cyan-400 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
-                    <i className="fab fa-dribbble"></i>
+                <a href="https://discord.com/users/1384846261013975061" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 hover:bg-indigo-500 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1 shadow-lg">
+                    <i className="fab fa-discord"></i>
                 </a>
                 <div className="w-px h-20 bg-gradient-to-b from-transparent via-blue-500 to-transparent mx-auto"></div>
             </div>
@@ -2028,11 +2038,11 @@ const IndexPages: React.FC = () => {
                                     <a href="https://www.linkedin.com/in/wilson-frederique-500b82352?" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
                                         <i className="fab fa-linkedin-in"></i>
                                     </a>
-                                    <a href="https://www.facebook.com/walle.fred" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
-                                        <i className="fab fa-facebook"></i>
+                                    <a href="https://wa.me/261344596117" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-700 hover:bg-green-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-green-400 transition-all-smooth">
+                                        <i className="fab fa-whatsapp"></i>
                                     </a>
-                                    <a href="#" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
-                                        <i className="fab fa-dribbble"></i>
+                                    <a href="https://discord.com/users/1384846261013975061" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-700 hover:bg-indigo-500/20 rounded-full flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-all-smooth">
+                                        <i className="fab fa-discord"></i>
                                     </a>
                                 </div>
                             </div>
@@ -2067,11 +2077,11 @@ const IndexPages: React.FC = () => {
                             <a href="https://www.linkedin.com/in/wilson-frederique-500b82352?" className="hover:text-indigo-400 transition-all-smooth">
                                 <i className="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="https://www.facebook.com/walle.fred" className="hover:text-indigo-400 transition-all-smooth">
-                                <i className="fab fa-facebook"></i>
+                            <a href="https://wa.me/261344596117" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-all-smooth">
+                                <i className="fab fa-whatsapp"></i>
                             </a>
-                            <a href="#" className="hover:text-indigo-400 transition-all-smooth">
-                                <i className="fab fa-dribbble"></i>
+                            <a href="https://discord.com/users/1384846261013975061" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400 transition-all-smooth">
+                                <i className="fab fa-discord"></i>
                             </a>
                         </div>
                     </div>
