@@ -24,6 +24,17 @@ type Project = {
 
 const additionalProjects: Project[] = [
   {
+    id: 3,
+    title: "Suivi et gestion des projets académiques",
+    description: "Conception et développement d'une plateforme web complète pour la digitalisation et l'optimisation du suivi des projets académiques. L’application centralise la gestion des projets, des étapes, des prestataires, des contrats et des paiements, et propose des tableaux de bord interactifs pour une prise de décision éclairée. Développée avec React.js, Express.js et MySQL, la plateforme intègre une gestion des rôles (admin, agent, responsable, décideur), une authentification sécurisée JWT, et un système de reporting automatisé. Elle améliore la transparence, réduit les erreurs manuelles et optimise le suivi en temps réel des projets éducatifs et de recherche.",
+    tags: ["React", "TypeScript", "Express", "MySQL", "API REST", "HTML & CSS"],
+    githubUrl: "https://github.com/WilsonFrederique/STAGE-SUIVI-DES-PROJETS.git",
+    type: "Full Stack",
+    gradientFrom: "from-blue-500/20",
+    gradientTo: "to-cyan-500/20",
+    icon: "fas fa-project-diagram"
+  },
+  {
     id: 4,
     title: "Gestion des emplois du temps et des salles",
     description: "Conception et développement d’une application web complète permettant la gestion centralisée des emplois du temps et l’organisation des salles de classe au sein d’un établissement. L’application offre une interface intuitive permettant aux administrateurs de planifier les cours, d’assigner des salles, d’éviter les conflits de réservation et de visualiser les emplois du temps en temps réel. Le projet a été réalisé en utilisant React pour le développement du front-end, Express.js pour la création d’une API REST sécurisée, et MySQL pour le stockage structuré et fiable des données.",
@@ -33,17 +44,6 @@ const additionalProjects: Project[] = [
     gradientFrom: "from-blue-500/20",
     gradientTo: "to-cyan-500/20",
     icon: "fas fa-book"
-  },
-  {
-    id: 5,
-    title: "Digitalisation des processus internes",
-    description: "Stage de fin d’études axé sur la digitalisation des processus internes d’une organisation à travers le développement sécurisé d’une application web. L’application a été conçue en utilisant le framework Laravel (Blade) côté back-end, associé à une base de données MySQL, dans le but d’optimiser la gestion des flux de travail, d’automatiser les opérations récurrentes, et de renforcer la traçabilité des données.",
-    tags: ["Laravel", "HTML & CSS", "MySQL"],
-    githubUrl: "https://github.com/WilsonFrederique/DIGITALISATION.git",
-    type: "Full Stack",
-    gradientFrom: "from-purple-500/20",
-    gradientTo: "to-pink-500/20",
-    icon: "fas fa-dumbbell"
   },
   {
     id: 6,
@@ -56,6 +56,17 @@ const additionalProjects: Project[] = [
     gradientFrom: "from-orange-500/20",
     gradientTo: "to-yellow-500/20",
     icon: "fas fa-graduation-cap"
+  },
+  {
+    id: 5,
+    title: "Digitalisation des processus internes",
+    description: "Stage de fin d’études axé sur la digitalisation des processus internes d’une organisation à travers le développement sécurisé d’une application web. L’application a été conçue en utilisant le framework Laravel (Blade) côté back-end, associé à une base de données MySQL, dans le but d’optimiser la gestion des flux de travail, d’automatiser les opérations récurrentes, et de renforcer la traçabilité des données.",
+    tags: ["Laravel", "HTML & CSS", "MySQL"],
+    githubUrl: "https://github.com/WilsonFrederique/DIGITALISATION.git",
+    type: "Full Stack",
+    gradientFrom: "from-purple-500/20",
+    gradientTo: "to-pink-500/20",
+    icon: "fas fa-dumbbell"
   },
   {
     id: 7,
@@ -394,6 +405,7 @@ const IndexPages: React.FC = () => {
         if (!showMoreProjects) return null;
 
         const projectImages = {
+            3: "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
             4: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
             5: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
             6: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
@@ -533,6 +545,7 @@ const IndexPages: React.FC = () => {
         if (!selectedProject) return null;
 
         const projectDetailImages = {
+            3: "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
             4: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
             5: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
             6: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
