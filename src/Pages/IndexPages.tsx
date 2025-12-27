@@ -3,7 +3,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import CV from '/CV_Wilson_Frederique.pdf';
 
-import Profil2 from '../assets/images/3021.jpg';
+import Profil2 from '../assets/images/3021.png';
 import AndroidStudio from '../assets/images/android.png';
 
 import { ToastContainer, toast } from 'react-toastify';
