@@ -993,7 +993,7 @@ const IndexPages: React.FC = () => {
             <nav className="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800/50">
                 <div className="max-w-7xl mx-auto px-6 py-4">
                     <div className="flex justify-between items-center">
-                        <a href="#" className="text-2xl font-bold gradient-text flex items-center">
+                        <a href="#home" className="text-2xl font-bold gradient-text flex items-center">
                             <i className="fas fa-code text-indigo-400 mr-2"></i>WILSON
                         </a>
                         
@@ -1209,7 +1209,7 @@ const IndexPages: React.FC = () => {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            <span className="section-title gradient-text">À propos</span>
+                            À <span className="section-title gradient-text">propos</span>
                         </h2>
                         <p className="text-gray-500 max-w-2xl mx-auto text-lg">
                             En savoir plus sur mon parcours, mes compétences et ma philosophie de travail.
@@ -1938,7 +1938,7 @@ const IndexPages: React.FC = () => {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                            <span className="text-indigo-400">05.</span> <span className="section-title gradient-text">Contact</span>
+                            Me <span className="section-title gradient-text">contacter</span>
                         </h2>
                         <p className="text-gray-500 max-w-2xl mx-auto text-lg">
                             Vous avez un projet ou une question ? N'hésitez pas à me contacter.
